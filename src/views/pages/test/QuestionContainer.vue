@@ -5,8 +5,9 @@
           block
           v-b-toggle="'accordion-' + singleQuestion.orderId"
           variant="light"
+          class="lead text-left font-weight-bolder"
       >
-        Question {{ singleQuestion.orderId }} of {{ questionTotalCount }}
+        {{questionLabel}}
       </b-button>
     </b-card-header>
     <b-collapse
@@ -52,10 +53,11 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import QuestionTitle from '@/views/pages/test/QuestionTitle.vue';
 import FreeText from '@/views/components/FreeText.vue';
 import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
-import { IQuestion } from '@/types/Interface';
+import { IOption, IQuestion } from '@/types/Interface';
 import 'reflect-metadata';
 import MultiCheckbox from '@/views/components/MultiCheckbox.vue';
 import SingleChoice from '@/views/components/SingleChoice.vue';
+import { ICheckboxOption } from '@/types/BootstrapTypes';
 
 @Component({
   components: {
@@ -79,6 +81,10 @@ export default class QuestionContainer extends Vue {
 
   @Prop({ required: false })
   readonly answer!: string;
+
+  get questionLabel(): string {
+    return `Question ${this.singleQuestion.orderId} of ${this.questionTotalCount}`;
+  }
 
   public sendingUp(orderId: number, value: string) {
     //console.log('sending up:', orderId, value);

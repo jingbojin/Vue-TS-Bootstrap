@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5>{{ questionText }}</h5>
+    <p>{{ questionText }}</p>
     <hr />
   </div>
 </template>
