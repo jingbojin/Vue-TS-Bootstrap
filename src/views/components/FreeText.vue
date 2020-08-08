@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
-import { ANSWER_INPUT_EMIT_NAME, IQuestion } from '@/types/interface';
+import { ANSWER_INPUT_EMIT_NAME, IQuestion } from '@/types/Interface';
 @Component
 
 export default class FreeText extends Vue {

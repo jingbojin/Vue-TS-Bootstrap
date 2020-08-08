@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { apiPayload } from '@/services/GetQuestions';
-import { IQuestion } from '@/types/interface';
+import { IQuestion } from '@/types/Interface';
 import { store } from '@/store/FormData';
 import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
 import QuestionContainer from '@/views/pages/test/QuestionContainer.vue';

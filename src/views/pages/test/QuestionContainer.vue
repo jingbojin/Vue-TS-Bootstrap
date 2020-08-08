@@ -15,10 +15,10 @@
         role="tabpanel"
     >
       <b-card-body>
-        <Question
+        <QuestionTitle
             :question-text="singleQuestion.questionText"
         />
-        <SingleSelect
+        <SingleChoice
             v-if="singleQuestion.type === 'singleSelect'"
             :readonly=readonly
             v-model=answer
@@ -33,6 +33,14 @@
             :answer=answer
             @freeTextEmit="sendingUp"
         />
+
+        <MultiCheckbox
+            v-else-if="singleQuestion.type === 'multiCheckbox'"
+            :readonly=readonly
+            :single-question="singleQuestion"
+            :answer=answer
+            @freeTextEmit="sendingUp"
+        />
       </b-card-body>
     </b-collapse>
   </b-card>
@@ -42,21 +50,20 @@
 
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import QuestionTitle from '@/views/pages/test/QuestionTitle.vue';
-import Question from '@/views/pages/test/Question.vue';
-
-import SingleSelect from '@/views/components/SingleSelect.vue';
 import FreeText from '@/views/components/FreeText.vue';
 import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
-import { IQuestion } from '@/types/interface';
+import { IQuestion } from '@/types/Interface';
 import 'reflect-metadata';
+import MultiCheckbox from '@/views/components/MultiCheckbox.vue';
+import SingleChoice from '@/views/components/SingleChoice.vue';
 
 @Component({
   components: {
     TestPageTitle,
     FreeText,
-    Question,
     QuestionTitle,
-    SingleSelect,
+    SingleChoice,
+    MultiCheckbox,
   }
 })
 
@@ -74,7 +81,7 @@ export default class QuestionContainer extends Vue {
   readonly answer!: string;
 
   public sendingUp(orderId: number, value: string) {
-    console.log('sending up:', orderId, value);
+    //console.log('sending up:', orderId, value);
     // console.log('QContainer orderId:', orderId);
     // console.log('QContainer value:', value);
     this.$emit('childToParent', orderId, value);

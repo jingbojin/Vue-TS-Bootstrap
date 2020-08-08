@@ -56,7 +56,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { apiPayload } from '@/services/GetQuestions';
-import { IFormItem, IQuestion } from '@/types/interface';
+import { IFormItem, IQuestion } from '@/types/Interface';
 import { store } from '@/store/FormData';
 import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
 import QuestionContainer from '@/views/pages/test/QuestionContainer.vue';
@@ -68,12 +68,12 @@ import QuestionContainer from '@/views/pages/test/QuestionContainer.vue';
   }
 })
 export default class Index extends Vue {
-  public tempForm: IFormItem = {};
-  public sharedState = store.state;
+  private tempForm: IFormItem = {};
+  private sharedState = store.state;
 
-  public questions!: IQuestion[];
-  public questionsCount!: number;
-  public currentPageNumber = 1;
+  private questions!: IQuestion[];
+  private questionsCount!: number;
+  private currentPageNumber = 1;
 
   public created() {
     this.loadQuestions();

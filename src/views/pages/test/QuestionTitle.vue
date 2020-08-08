@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h4>Question {{ questionIndex }} of {{ questionTotalCount }}</h4>
+    <h5>{{ questionText }}</h5>
+    <hr />
   </div>
 </template>
 
@@ -10,10 +11,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 
 export default class QuestionTitle extends Vue {
-  @Prop({required: true})
-  readonly questionIndex!: number;
-
-  @Prop({required: true})
-  readonly questionTotalCount!: number;
+  @Prop({ required: true })
+  readonly questionText!: string;
 }
 </script>

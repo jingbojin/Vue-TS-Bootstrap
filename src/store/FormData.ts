@@ -1,4 +1,4 @@
-import { IFormItem } from '@/types/interface';
+import { IFormItem } from '@/types/Interface';
 
 export interface IStore {
   debug: boolean;
