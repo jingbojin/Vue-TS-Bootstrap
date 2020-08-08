@@ -2,15 +2,15 @@
   <b-form-textarea
       v-if="readonly"
       :placeholder=answer
-      rows="3"
-      max-rows="6"
+      rows="1"
+      max-rows="1"
       :readonly=readonly
       @input="sendingUp(singleQuestion.orderId, $event)"
   />
   <b-form-textarea
       v-else-if="!readonly"
-      rows="3"
-      max-rows="6"
+      rows="1"
+      max-rows="1"
       :readonly=readonly
       @input="sendingUp(singleQuestion.orderId, $event)"
   />

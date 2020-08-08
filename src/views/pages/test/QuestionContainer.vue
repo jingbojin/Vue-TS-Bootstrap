@@ -53,11 +53,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import QuestionTitle from '@/views/pages/test/QuestionTitle.vue';
 import FreeText from '@/views/components/FreeText.vue';
 import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
-import { IOption, IQuestion } from '@/types/Interface';
+import { IQuestion } from '@/types/Interface';
 import 'reflect-metadata';
 import MultiCheckbox from '@/views/components/MultiCheckbox.vue';
 import SingleChoice from '@/views/components/SingleChoice.vue';
-import { ICheckboxOption } from '@/types/BootstrapTypes';
 
 @Component({
   components: {

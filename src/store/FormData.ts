@@ -1,9 +1,12 @@
 import { IFormItem } from '@/types/Interface';
+import { Moment } from 'moment';
 
 export interface IStore {
   debug: boolean;
   state: {
     form: IFormItem;
+    startedTime: Moment | null;
+    finishedTime: Moment | null;
   };
 }
 
@@ -12,6 +15,8 @@ export interface IStore {
 export const store: IStore = {
   debug: true,
   state: {
-    form: {}
+    form: {},
+    startedTime: null,
+    finishedTime: null,
   },
 }

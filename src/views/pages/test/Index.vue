@@ -1,13 +1,15 @@
 <template>
   <b-container>
     <b-form @submit="onSubmit">
-      <TestPageTitle/>
+      <TestPageTitle
+          :testName=testName
+      />
       <div v-if="tempForm !== undefined">
         <div role="tablist">
           <QuestionContainer
-              :currentPageNumber="currentPageNumber"
               :questionTotalCount="questionsCount"
-              v-for="q in questions"
+              v-for="(q, index) in questions"
+              v-show="decideQuestionVisibility(index)"
               :key="q.orderId"
               :singleQuestion="q"
               @childToParent="submitEachAnswer"
@@ -15,51 +17,55 @@
           />
         </div>
       </div>
-      <b-row>
-        <b-button-group>
-          <b-row>
-            <b-col>
-              <b-button
-                  variant="danger"
-                  v-if="currentPageNumber>1"
-                  v-on:click="currentPageNumber -= 1"
-              >
-                Previous
-              </b-button>
-            </b-col>
-            <b-col>
-              <b-button
-                  variant="danger"
-                  v-if="currentPageNumber<10"
-                  v-on:click="currentPageNumber += 1"
-              >
-                Next
-              </b-button>
-            </b-col>
-          </b-row>
-        </b-button-group>
-      </b-row>
-      <b-row>
-        <b-button-group>
+      <b-row align-v="center" class="my-4">
+        <b-col cols="3">
           <b-button
-              type="submit"
-              variant="primary success"
+              variant="danger"
+              v-if="currentPageNumber>1"
+              @click="currentPageNumber -= 1"
           >
-            Finish Now
+            <b-icon icon="caret-left-fill" aria-hidden="true"/>
+            Previous
           </b-button>
-        </b-button-group>
+        </b-col>
+        <b-col cols="6" class="text-center">
+          <b-icon icon="stickies-fill" aria-hidden="true"/> Page {{currentPageNumber}} of {{totalPageCount}}
+        </b-col>
+        <b-col cols="3" class="text-right">
+          <b-button
+              variant="danger"
+              v-if="currentPageNumber<totalPageCount"
+              @click="currentPageNumber += 1"
+          >
+            Next
+            <b-icon icon="caret-right-fill" aria-hidden="true"/>
+          </b-button>
+        </b-col>
       </b-row>
+      <div
+          class="text-center p-3"
+          v-if="currentPageNumber === totalPageCount"
+      >
+        <b-button
+            type="submit"
+            variant="primary success"
+        >
+          Finish Now
+        </b-button>
+      </div>
     </b-form>
   </b-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { apiPayload } from '@/services/GetQuestions';
+import { fetchTest } from '@/services/GetQuestions';
 import { IFormItem, IQuestion } from '@/types/Interface';
 import { store } from '@/store/FormData';
 import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
 import QuestionContainer from '@/views/pages/test/QuestionContainer.vue';
+import moment from 'moment';
+import router from '@/router';
 
 @Component({
   components: {
@@ -70,34 +76,59 @@ import QuestionContainer from '@/views/pages/test/QuestionContainer.vue';
 export default class Index extends Vue {
   private tempForm: IFormItem = {};
   private sharedState = store.state;
+  private testName = '';
 
-  private questions!: IQuestion[];
-  private questionsCount!: number;
+  private questions: IQuestion[] = [];
+  private questionsCount = 0;
+  private totalPageCount = 0;
+
+  // Unlike `index`, PageNumber starts with 1, as normally a book starts with page 1:
   private currentPageNumber = 1;
+  private numberOfQuestionsPerPage = 0;
 
-  public created() {
-    this.loadQuestions();
+  public async created(): Promise<void> {
+    await this.loadQuestions();
+
+    // Start the clock once user see the questions:
+    this.sharedState.startedTime = moment();
   }
 
-  public loadQuestions() {
-    this.questions = apiPayload.questionList;
+  public async loadQuestions(): Promise<void> {
+    const apiResponse = await fetchTest();
+    this.questions = apiResponse.questionList;
+    this.testName = apiResponse.testName;
     this.questionsCount = this.questions ? this.questions.length : 0;
-    apiPayload.questionList.forEach((q: IQuestion) => {
+    this.numberOfQuestionsPerPage = apiResponse.pageControl.numPerPage;
+    this.totalPageCount = Math.ceil(
+        (this.questionsCount) / (this.numberOfQuestionsPerPage)
+    );
+    apiResponse.questionList.forEach((q: IQuestion) => {
       this.tempForm[q.orderId] = '';
     });
   }
 
-  public onSubmit(evt: Event) {
+  public onSubmit(evt: Event): void {
     evt.preventDefault();
+    this.sharedState.finishedTime = moment();
     this.sharedState.form = this.tempForm;
-    alert(JSON.stringify(this.sharedState.form));
+    // alert(JSON.stringify(this.sharedState.form));
+
+    // Programmatic Navigate to result page
+    router.push({ name: 'result' });
   }
 
-  public submitEachAnswer(orderId: number, value: string) {
+  public submitEachAnswer(orderId: number, value: string): void {
     // console.log('in parent:', orderId, value);
     this.tempForm[orderId] = value;
   }
 
+  public decideQuestionVisibility(index: number): boolean {
+    // Notes: `index` starts with 0, `minQuestionIndex` also starts with 0.
+    // However, PageNumber start with 1:
+    const minQuestionIndex = (this.currentPageNumber-1) * this.numberOfQuestionsPerPage;
+    const maxQuestionIndex = (this.currentPageNumber * this.numberOfQuestionsPerPage) - 1;
+    return (index >= minQuestionIndex) && (index <= maxQuestionIndex);
+  }
   /**
    public onReset = (evt: Event) => {
     evt.preventDefault();

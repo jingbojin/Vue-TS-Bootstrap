@@ -17,6 +17,7 @@ export interface IQuestion {
 }
 
 export interface IApiQuestionsPayload {
+  testName: string;
   questionList: IQuestion[];
   pageControl: {
     numPerPage: number;

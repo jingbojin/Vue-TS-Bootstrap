@@ -3,6 +3,7 @@ import {
   IApiQuestionsPayload,
   IQuestion
 } from '@/types/Interface';
+import axios from "axios";
 
 const q1: IQuestion = {
   orderId: 1,
@@ -11,11 +12,11 @@ const q1: IQuestion = {
   options: [
     {
       key: 'A',
-      value: 'Yes',
+      value: 'A) No',
     },
     {
       key: 'B',
-      value: 'No',
+      value: 'B) Yes',
     }
   ],
 };
@@ -31,26 +32,173 @@ const q3: IQuestion = {
   options: [
     {
       key: 'A',
-      value: 'Nicole Kidman',
+      value: 'A) Nicole Kidman',
     },
     {
       key: 'B',
-      value: 'Tom Hanks',
+      value: 'B) Tom Hanks',
     },
     {
       key: 'C',
-      value: 'Robert Jr.',
+      value: 'C) Robert Jr.',
     },
     {
       key: 'D',
-      value: 'Chirs Hamswas',
+      value: 'D) Chirs Hamswas',
+    }
+  ],
+};
+
+const q4: IQuestion = {
+  orderId: 4,
+  type: EQuestionType.singleSelect,
+  questionText: 'What is the name of Jon Snow’s direwolf?',
+  options: [
+    {
+      key: 'A',
+      value: 'A)  Grey Wind',
+    },
+    {
+      key: 'B',
+      value: 'B)  Nymeria',
+    },
+    {
+      key: 'C',
+      value: 'C)  Summer',
+    },
+    {
+      key: 'D',
+      value: 'D)  Ghost',
+    },
+  ],
+};
+
+const q5: IQuestion = {
+  orderId: 5,
+  type: EQuestionType.freeText,
+  questionText: '‘All men must die’ translates as what term in High Valyrian?',
+};
+const q6: IQuestion = {
+  orderId: 6,
+  type: EQuestionType.multiCheckbox,
+  questionText: 'Who is from house of stack?',
+  options: [
+    {
+      key: 'A',
+      value: 'A) Jon',
+    },
+    {
+      key: 'B',
+      value: 'B) Bran',
+    },
+    {
+      key: 'C',
+      value: 'C) Arya',
+    },
+    {
+      key: 'D',
+      value: 'D) Sansa',
+    },
+    {
+      key: 'E',
+      value: 'E) Cersei',
+    }
+  ],
+};
+const q7: IQuestion = {
+  orderId: 7,
+  type: EQuestionType.singleSelect,
+  questionText: 'The Narrow Sea separates Essos and which continent?',
+  options: [
+    {
+      key: 'A',
+      value: 'A) Dorne',
+    },
+    {
+      key: 'B',
+      value: 'B) Qarth',
+    },
+    {
+      key: 'C',
+      value: 'C) Westeros',
+    },
+    {
+      key: 'D',
+      value: 'D) Esteros',
+    }
+  ],
+};
+
+const q8: IQuestion = {
+  orderId: 8,
+  type: EQuestionType.freeText,
+  questionText: '(Big Bang Theory) What was the name of the workplace where Penny and Bernadette met?',
+};
+
+const q9: IQuestion = {
+  orderId: 9,
+  type: EQuestionType.singleSelect,
+  questionText: "Which Of The Following Is NOT One Of Howard's Nicknames?",
+  options: [
+    {
+      key: 'A',
+      value: 'A) Howie',
+    },
+    {
+      key: 'B',
+      value: 'B) Fruit Loops',
+    },
+    {
+      key: 'C',
+      value: 'C) Wolowizard',
+    },
+    {
+      key: 'D',
+      value: 'D) Ward',
+    }
+  ],
+};
+const q10: IQuestion = {
+  orderId: 10,
+  type: EQuestionType.singleSelect,
+  questionText: "What Video Game Did Penny Become Addicted To?",
+  options: [
+    {
+      key: 'A',
+      value: 'A) World of Warcraft',
+    },
+    {
+      key: 'B',
+      value: 'B) Age of Conan',
+    },
+    {
+      key: 'C',
+      value: 'C) Secret World Legends',
+    },
+    {
+      key: 'D',
+      value: 'D) Dark Age of Camelot',
     }
   ],
 };
 
 export const apiPayload: IApiQuestionsPayload = {
-  questionList: [q1, q2, q3],
+  testName: 'Who Wants to Be a Millionaire?',
+  questionList: [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10],
   pageControl: {
-    numPerPage: 1,
+    numPerPage: 3,
   },
 };
+
+// Simulate axios api call to fetch test data:
+export const fetchTest = async (): Promise<IApiQuestionsPayload> => {
+  // `test_data.json` located under `public`.
+  // It is converted from above const `apiPayload`.
+  return axios.get('test_data.json', { baseURL: window.location.origin })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error.response.data;
+    });
+}

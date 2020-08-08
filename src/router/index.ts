@@ -21,7 +21,10 @@ const routes: Array<RouteConfig> = [
     path: '/result',
     name: 'result',
     component: () => import(/* webpackChunkName: "about" */ '../views/pages/result/Index.vue')
-  }
+  },
+  
+  // This must be the last route to catch all other paths
+  { path: "*", redirect: "/" },
 ];
 
 const router = new VueRouter({
