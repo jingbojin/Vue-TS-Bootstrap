@@ -28,4 +28,4 @@ export interface IFormItem {
   [key: number]: string;
 }
 
-export const ANSWER_INPUT_EMIT_NAME = 'freeTextEmit';
+export const ANSWER_INPUT_EMIT_NAME = 'answerInputEmitName';

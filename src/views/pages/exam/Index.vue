@@ -59,13 +59,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { fetchTest } from '@/services/GetQuestions';
+import { fetchTest } from '@/services/api/GetQuestions';
 import { IFormItem, IQuestion } from '@/types/Interface';
 import { store } from '@/store/FormData';
-import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
-import QuestionContainer from '@/views/pages/test/QuestionContainer.vue';
+import TestPageTitle from '@/views/pages/exam/TestPageTitle.vue';
+import QuestionContainer from '@/views/pages/exam/QuestionContainer.vue';
 import moment from 'moment';
-import router from '@/router';
+import { ERouterName, router } from '@/router/Index';
 
 @Component({
   components: {
@@ -89,7 +89,7 @@ export default class Index extends Vue {
   public async created(): Promise<void> {
     await this.loadQuestions();
 
-    // Start the clock once user see the questions:
+    // Start the clock once user sees the questions:
     this.sharedState.startedTime = moment();
   }
 
@@ -111,10 +111,9 @@ export default class Index extends Vue {
     evt.preventDefault();
     this.sharedState.finishedTime = moment();
     this.sharedState.form = this.tempForm;
-    // alert(JSON.stringify(this.sharedState.form));
 
     // Programmatic Navigate to result page
-    router.push({ name: 'result' });
+    router.push({ name: ERouterName.result });
   }
 
   public submitEachAnswer(orderId: number, value: string): void {
@@ -129,21 +128,5 @@ export default class Index extends Vue {
     const maxQuestionIndex = (this.currentPageNumber * this.numberOfQuestionsPerPage) - 1;
     return (index >= minQuestionIndex) && (index <= maxQuestionIndex);
   }
-  /**
-   public onReset = (evt: Event) => {
-    evt.preventDefault();
-    // Reset our form values
-    this.form.email = '';
-    this.form.name = '';
-    this.form.food = null;
-    this.form.checked = [];
-    // Trick to reset/clear native browser form validation state
-    this.show = false;
-    this.$nextTick(() => {
-      this.show = true;
-    })
-  };
-   */
-
 }
 </script>

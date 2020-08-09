@@ -17,7 +17,7 @@
           :readonly=true
       />
     </div>
-    <div align-v="center" class="my-4 text-center">
+    <div class="my-4 text-center">
         <b-button
             pill
             variant="success"
@@ -31,13 +31,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { fetchTest } from '@/services/GetQuestions';
+import { fetchTest } from '@/services/api/GetQuestions';
 import { IQuestion } from '@/types/Interface';
 import { store } from '@/store/FormData';
-import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
-import QuestionContainer from '@/views/pages/test/QuestionContainer.vue';
+import TestPageTitle from '@/views/pages/exam/TestPageTitle.vue';
+import QuestionContainer from '@/views/pages/exam/QuestionContainer.vue';
 import ResultPageTitle from '@/views/pages/result/ResultPageTitle.vue';
-import router from '@/router';
+import { router, ERouterName } from '@/router/Index';
 
 @Component({
   components: {
@@ -65,7 +65,7 @@ export default class Index extends Vue {
   }
 
   public redirectToTestPage() {
-    router.push({ name: 'test' });
+    router.push({ name: ERouterName.exam });
   }
 }
 </script>

@@ -3,9 +3,17 @@ import {
   IApiQuestionsPayload,
   IQuestion
 } from '@/types/Interface';
-import axios from "axios";
 
-const q1: IQuestion = {
+/**
+ * This file is used to generate the `public/test_data.json`.
+ * Feel free to add/remove/update the question list, and then run
+ * `JSON.stringify(apiPayload)`. Copy and paste the output to `public/test_data.json`.
+ *
+ * The advantage of using this file is it is Type guarded by TS, to ensure every
+ * record has the correct types & fields.
+ */
+
+export const q1: IQuestion = {
   orderId: 1,
   type: EQuestionType.singleSelect,
   questionText: 'Julius Caesar was the first emperor of Rome.',
@@ -25,7 +33,8 @@ const q2: IQuestion = {
   type: EQuestionType.freeText,
   questionText: '10*29*32*11 = ?',
 };
-const q3: IQuestion = {
+
+export const q3: IQuestion = {
   orderId: 3,
   type: EQuestionType.multiCheckbox,
   questionText: 'Who is the Australian actor?',
@@ -190,15 +199,4 @@ export const apiPayload: IApiQuestionsPayload = {
   },
 };
 
-// Simulate axios api call to fetch test data:
-export const fetchTest = async (): Promise<IApiQuestionsPayload> => {
-  // `test_data.json` located under `public`.
-  // It is converted from above const `apiPayload`.
-  return axios.get('test_data.json', { baseURL: window.location.origin })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      throw error.response.data;
-    });
-}
+

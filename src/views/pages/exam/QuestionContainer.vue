@@ -24,7 +24,7 @@
             :readonly=readonly
             v-model=answer
             :singleQuestion="singleQuestion"
-            @freeTextEmit="sendingUp"
+            @answerInputEmitName="sendingUp"
         />
 
         <FreeText
@@ -32,7 +32,7 @@
             :readonly=readonly
             :single-question="singleQuestion"
             :answer=answer
-            @freeTextEmit="sendingUp"
+            @answerInputEmitName="sendingUp"
         />
 
         <MultiCheckbox
@@ -40,7 +40,7 @@
             :readonly=readonly
             :single-question="singleQuestion"
             :answer=answer
-            @freeTextEmit="sendingUp"
+            @answerInputEmitName="sendingUp"
         />
       </b-card-body>
     </b-collapse>
@@ -48,11 +48,10 @@
 </template>
 
 <script lang="ts">
-
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import QuestionTitle from '@/views/pages/test/QuestionTitle.vue';
+import QuestionTitle from '@/views/pages/exam/QuestionTitle.vue';
 import FreeText from '@/views/components/FreeText.vue';
-import TestPageTitle from '@/views/pages/test/TestPageTitle.vue';
+import TestPageTitle from '@/views/pages/exam/TestPageTitle.vue';
 import { IQuestion } from '@/types/Interface';
 import 'reflect-metadata';
 import MultiCheckbox from '@/views/components/MultiCheckbox.vue';
@@ -86,12 +85,7 @@ export default class QuestionContainer extends Vue {
   }
 
   public sendingUp(orderId: number, value: string) {
-    //console.log('sending up:', orderId, value);
-    // console.log('QContainer orderId:', orderId);
-    // console.log('QContainer value:', value);
     this.$emit('childToParent', orderId, value);
   }
 }
-
-// https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
 </script>

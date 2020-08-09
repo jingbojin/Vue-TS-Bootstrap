@@ -3,23 +3,28 @@ import VueRouter, { RouteConfig } from 'vue-router';
 
 Vue.use(VueRouter);
 
+export enum ERouterName {
+  exam='exam',
+  result='result',
+}
+
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'test',
+    name: ERouterName.exam,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/pages/test/Index.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/pages/exam/Index.vue')
   },
   {
-    path: '/test',
-    name: 'test',
-    component: () => import(/* webpackChunkName: "about" */ '../views/pages/test/Index.vue')
+    path: '/exam',
+    name: ERouterName.exam,
+    component: () => import(/* webpackChunkName: "about" */ '../views/pages/exam/Index.vue')
   },
   {
     path: '/result',
-    name: 'result',
+    name: ERouterName.result,
     component: () => import(/* webpackChunkName: "about" */ '../views/pages/result/Index.vue')
   },
   
@@ -27,10 +32,8 @@ const routes: Array<RouteConfig> = [
   { path: "*", redirect: "/" },
 ];
 
-const router = new VueRouter({
+export const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 });
-
-export default router;

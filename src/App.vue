@@ -3,6 +3,7 @@
     <div class="text-center">
       <b-img src="/logo.png" fluid alt="Fluid image"></b-img>
     </div>
+    <hr/>
     <router-view/>
   </div>
 </template>
