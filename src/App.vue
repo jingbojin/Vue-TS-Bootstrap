@@ -1,8 +1,7 @@
 <template>
   <div id="app" class="container">
-    <div id="nav">
-      <router-link to="/">test</router-link> |
-      <router-link to="/result">result</router-link>
+    <div class="text-center">
+      <b-img src="/logo.png" fluid alt="Fluid image"></b-img>
     </div>
     <router-view/>
   </div>
@@ -14,18 +13,5 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
