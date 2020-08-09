@@ -9,7 +9,7 @@
           <QuestionContainer
               :questionTotalCount="questionsCount"
               v-for="(q, index) in questions"
-              v-show="decideQuestionVisibility(index)"
+              v-show="decideVisibility(index, currentPageNumber, numberOfQuestionsPerPage)"
               :key="q.orderId"
               :singleQuestion="q"
               @childToParent="submitEachAnswer"
@@ -66,6 +66,7 @@ import TestPageTitle from '@/views/pages/exam/TestPageTitle.vue';
 import QuestionContainer from '@/views/pages/exam/QuestionContainer.vue';
 import moment from 'moment';
 import { ERouterName, router } from '@/router/Index';
+import { decideQuestionVisibility } from '@/utils/DecideQuestionVisibility';
 
 @Component({
   components: {
@@ -121,12 +122,6 @@ export default class Index extends Vue {
     this.tempForm[orderId] = value;
   }
 
-  public decideQuestionVisibility(index: number): boolean {
-    // Notes: `index` starts with 0, `minQuestionIndex` also starts with 0.
-    // However, PageNumber start with 1:
-    const minQuestionIndex = (this.currentPageNumber-1) * this.numberOfQuestionsPerPage;
-    const maxQuestionIndex = (this.currentPageNumber * this.numberOfQuestionsPerPage) - 1;
-    return (index >= minQuestionIndex) && (index <= maxQuestionIndex);
-  }
+  public decideVisibility = decideQuestionVisibility;
 }
 </script>

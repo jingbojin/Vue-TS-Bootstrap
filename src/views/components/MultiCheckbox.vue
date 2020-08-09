@@ -5,9 +5,9 @@
         label="(You can choice more than one answer)"
     >
       <b-form-checkbox-group
+          :name="'multiCheckbox-' + singleQuestion.orderId"
           v-model="selected"
           :options="bootstrapOptions"
-          name="flavour-2a"
           stacked
           @change="sendingUp(singleQuestion.orderId, $event)"
       />

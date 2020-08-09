@@ -56,6 +56,7 @@ import { IQuestion } from '@/types/Interface';
 import 'reflect-metadata';
 import MultiCheckbox from '@/views/components/MultiCheckbox.vue';
 import SingleChoice from '@/views/components/SingleChoice.vue';
+import { printQuestionLabel } from '@/utils/PrintQuestionLabel';
 
 @Component({
   components: {
@@ -81,7 +82,7 @@ export default class QuestionContainer extends Vue {
   readonly answer!: string;
 
   get questionLabel(): string {
-    return `Question ${this.singleQuestion.orderId} of ${this.questionTotalCount}`;
+    return printQuestionLabel(this.singleQuestion.orderId, this.questionTotalCount);
   }
 
   public sendingUp(orderId: number, value: string) {

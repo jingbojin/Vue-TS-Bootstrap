@@ -4,7 +4,7 @@
         v-if=!readonly
     >
       <b-form-radio
-          name="singleSelect"
+          :name="'singleSelect-' + singleQuestion.orderId"
           v-for="item in singleQuestion.options"
           :key="item.key"
           :value="item.key"
