@@ -15,4 +15,3 @@ npm install -g codecov
 
 echo '==> Install application packages'
 npm ci
-cd -
