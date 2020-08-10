@@ -1,7 +1,10 @@
 # Online-Exam (A Vue + TypeScript + Bootstrap + Axios Project example)
 [![Build Status](https://travis-ci.com/jingbojin/exam.svg?token=AiCM6zPJxbZCtuxqfTpu&branch=master)](https://travis-ci.com/jingbojin/exam)
+[![codecov](https://codecov.io/gh/jingbojin/exam/branch/master/graph/badge.svg)](https://codecov.io/gh/jingbojin/exam)
 [![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m785725864-85305093236c6fea5c07351a)](https://uptimerobot.com/dashboard#785725864)
 [![Website exam.jingbojin.com](https://img.shields.io/website-up-down-green-red/http/exam.jingbojin.com)](https://exam.jingbojin.com/)
+![npm type definitions](https://img.shields.io/npm/types/typescript?label=TS)
+![Vue](https://img.shields.io/badge/vue-2.x-brightgreen.svg)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This frontend website was bootstrapped with [Vue CLI](https://cli.vuejs.org/).
