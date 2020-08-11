@@ -11,7 +11,7 @@ describe('Index.vue', () => {
     // pass the `localVue` to the mount options
     const wrapper = mount(Index, {
       localVue,
-    })
+    });
     
     expect(wrapper.text()).toContain('Title: ');
     expect(wrapper.text()).toContain('Try again?');

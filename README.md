@@ -7,39 +7,54 @@
 ![Vue](https://img.shields.io/badge/vue-2.x-brightgreen.svg)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-This frontend website was bootstrapped with [Vue CLI](https://cli.vuejs.org/).
-
+Demo site: http://exam.jingbojin.com
 ***
 ## Application workflow:
-This application simulates an online survey/exam website. 
+
+This application simulates an online exam/survey website. 
 There are two pages:
-1. Test taking page to allow user input/select answers.
-2. A result page to show what user submitted.
+1. An exam page: Allow users to input/select their answers.
+2. A result page: Show users what they have submitted, with start and finish time.
+
+Once users submitted their answers, they will be redirected to the result page.
 
 There are 3 types of questions:
 
-| Type          |                                |
-| ------------- |:-------------------------------|
-| singleSelect  | only one answer is allowed     |
-| multiCheckbox | multiple choices are permitted |
-| freeText      | free text answer               |
+| Question Type |                                    |
+| ------------- |:-----------------------------------|
+| singleSelect  | only one answer is allowed         |
+| multiCheckbox | multiple selections are permitted  |
+| freeText      | free text answer                   |
+
+The questions list can be modified in [test_data.json](public/test_data.json), 
+you can utilise [MockApiResponse](src/services/api/MockApiResponse.ts) to update/print this json file. 
+
+This json file also controls:
+* The test title
+* Pagination setting for exam page (number of questions per page)
 
 ## I. Running website in your local
-1. Available commands: 
 
-    In the project root directory, you can run:
+In the project root directory: 
+1. Install packages:
+    ### `npm install`
     
+2. Runs the app in the development mode:
     ### `npm run serve`
-    
-    Runs the app in the development mode.<br>
     Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
-    
+        
     The page will reload if you make edits.<br>
     You will also see any lint errors in the console.
+    
+3. Other available commands:
     
     ### `npm run test:unit`
     
     Launches the test runner in the interactive watch mode.<br>
+    
+    ### `npm run test:coverage`
+        
+    Run jest test coverage.<br>
     
     ### `npm run build`
     
@@ -47,17 +62,19 @@ There are 3 types of questions:
     It correctly bundles application in production mode and optimizes the build for the best performance.
     
     The build is minified, and the filenames include the hashes.<br>
-    Your app is ready to be deployed!
     
-    See the section about [deployment](https://cli.vuejs.org/guide/deployment.html#general-guidelines) for more information.
 ***
+## II. ci/cd Deployment process
+#### 1. CI:
+This repo is using Travis ci, check [.travis.yml](.travis.yml).
 
-## II. Deployment process
-#### 1. CI/CD:
+#### 2. CD:
 This application can be deployed to heroku, the config file is in root folder `static.json`.
 
 More information:
 [Deploy to heroku](https://cli.vuejs.org/guide/deployment.html#heroku)
+
+See the section about [deployment](https://cli.vuejs.org/guide/deployment.html#general-guidelines) for more information.
 
 ***
 ## III. IDE Lint & Debug
@@ -65,28 +82,28 @@ More information:
     When running `npm run build` or `npm run serve`, it will automatically run linting. 
     You could also use `npm run lint`. 
 
-#### 2. Debug: 
-    https://vuejs.org/v2/cookbook/debugging-in-vscode.html
+#### 2. [Debug](https://vuejs.org/v2/cookbook/debugging-in-vscode.html)
 
-#### 3. Development tool: 
-    https://github.com/vuejs/vue-devtools
+#### 3. [Development tool](https://github.com/vuejs/vue-devtools)
     
 ***
 ## IV. Testing tips
-#### 1. Guide:
-https://vuejs.org/v2/guide/unit-testing.html
+#### 1. [Guide](https://vuejs.org/v2/guide/unit-testing.html)
 
 ***
 ## NOTES
 1. '.eslintrc.js' is modified to turn off interface prefix rule:
-```
-'@typescript-eslint/interface-name-prefix': 'off',
-```
+    ```
+    '@typescript-eslint/interface-name-prefix': 'off',
+    ```
 
 ***
 ## Potential improvement:
-1. Adding user input validations.
+1. Add user input validations.
 2. Use local Storage to support offline saving draft answers. 
+3. Reduce bundle size by selectively importing bootstrap.vue components.
+4. This application is using [Vue simple state management](https://vuejs.org/v2/guide/state-management.html#Simple-State-Management-from-Scratch).
+    You may want to use [Vuex](https://github.com/vuejs/vuex) for more complicated scenario.
 
 ***
 ### Customize configuration

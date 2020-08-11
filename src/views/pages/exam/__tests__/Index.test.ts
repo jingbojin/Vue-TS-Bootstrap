@@ -7,7 +7,7 @@ describe('Index.vue', () => {
     // pass the `localVue` to the mount options
     const wrapper = mount(Index, {
       localVue,
-    })
+    });
     
     // In unit test env, the api no longer works since there isn't a server to
     // serve the `test_data.json`.
