@@ -99,10 +99,11 @@ See the section about [deployment](https://cli.vuejs.org/guide/deployment.html#g
 
 ***
 ## Potential improvement:
-1. Add user input validations.
-2. Use local Storage to support offline saving draft answers. 
-3. Reduce bundle size by selectively importing bootstrap.vue components.
-4. This application is using [Vue simple state management](https://vuejs.org/v2/guide/state-management.html#Simple-State-Management-from-Scratch).
+1. Result page still needs some polish for mobile responsive view.
+2. Add user input validations.
+3. Use local Storage to support offline saving draft answers. 
+4. Reduce bundle size by selectively importing bootstrap.vue components.
+5. This application is using [Vue simple state management](https://vuejs.org/v2/guide/state-management.html#Simple-State-Management-from-Scratch).
     You may want to use [Vuex](https://github.com/vuejs/vuex) for more complicated scenario.
 
 ***
