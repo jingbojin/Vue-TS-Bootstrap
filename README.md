@@ -18,7 +18,7 @@ There are two pages:
 
 * Once users submitted their answers, they will be redirected to the result page.
 * In the result page, there is a `Try again` button in the end of the page, 
-so that users can take retry the exam. 
+so that users can retry the exam. 
 * Therefore, both page can navigate to each other. 
 
 There are 3 types of questions:
