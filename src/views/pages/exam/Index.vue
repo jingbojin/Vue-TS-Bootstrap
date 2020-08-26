@@ -122,6 +122,8 @@ export default class Index extends Vue {
     this.tempForm[orderId] = value;
   }
 
+  // Another Vue issue, the function has to be reassigned here.
+  // <template> cannot directly use the `decideQuestionVisibility`
   public decideVisibility = decideQuestionVisibility;
 }
 </script>
