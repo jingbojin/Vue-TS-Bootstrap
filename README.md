@@ -9,6 +9,10 @@
 
 Demo site: http://exam.jingbojin.com
 ***
+## Part of the Vue vs React experiment:
+[React version](https://github.com/jingbojin/exam-react): https://github.com/jingbojin/exam-react
+
+***
 ## Application workflow:
 
 This application simulates an online exam/survey website. 
