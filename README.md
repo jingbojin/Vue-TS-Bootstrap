@@ -1,4 +1,4 @@
-# Online-Exam (A Vue + TypeScript + Bootstrap + Axios Project example)
+# A Vue + TypeScript + Bootstrap + Axios Project example
 [![Build Status](https://travis-ci.com/jingbojin/exam.svg?token=AiCM6zPJxbZCtuxqfTpu&branch=master)](https://travis-ci.com/jingbojin/exam)
 [![codecov](https://codecov.io/gh/jingbojin/exam/branch/master/graph/badge.svg)](https://codecov.io/gh/jingbojin/exam)
 [![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m785725864-85305093236c6fea5c07351a)](https://uptimerobot.com/dashboard#785725864)
@@ -8,9 +8,10 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Demo site: http://exam.jingbojin.com
+
 ***
-## Part of the Vue vs React experiment:
-[React version](https://github.com/jingbojin/exam-react): https://github.com/jingbojin/exam-react
+## Part of the `Vue vs React` experiment:
+[React version](https://github.com/jingbojin/React-Redux-TS-Bootstrap): https://github.com/jingbojin/React-Redux-TS-Bootstrap
 
 ***
 ## Application workflow:

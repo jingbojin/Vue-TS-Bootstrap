@@ -42,4 +42,16 @@
     transform: translateY(0px)
   }
 }
+
+a#forkme_banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 138px;
+  height: 138px;
+  display: block;
+  background: transparent url(assets/fork-sprite.png) 0 0 no-repeat;
+  text-indent: -9000px;
+  z-index: 3;
+}
 </style>
