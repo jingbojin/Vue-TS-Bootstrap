@@ -53,18 +53,18 @@ export default class Index extends Vue {
   private currentPageNumber = 1;
   private testName = '';
 
-  public async created() {
+  public async created(): Promise<void> {
     await this.loadQuestions();
   }
 
-  public async loadQuestions() {
+  public async loadQuestions(): Promise<void> {
     const apiResponse = await fetchTest();
     this.questions = apiResponse.questionList;
     this.questionsCount = this.questions ? this.questions.length : 0;
     this.testName = apiResponse.testName;
   }
 
-  public redirectToTestPage() {
+  public redirectToTestPage(): void {
     router.push({ name: ERouterName.exam });
   }
 }

@@ -6,7 +6,7 @@ import ResultPageTitle from '@/views/pages/result/ResultPageTitle.vue';
 describe('ResultPageTitle.vue', () => {
   it('renders correctly', () => {
   const testName = 'A random test name';
-  const startedTime = moment('2020-08-09 09:30:26.123');;
+  const startedTime = moment('2020-08-09 09:30:26.123');
   const finishedTime = moment('2020-08-09 10:30:26.123');
     // pass the `localVue` to the mount options
     const wrapper = mount(ResultPageTitle, {

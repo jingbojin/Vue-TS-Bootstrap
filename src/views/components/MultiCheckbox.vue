@@ -59,7 +59,7 @@ export default class MultiCheckbox extends Vue {
   // Notes: TS @Emit decorator will forward argument to parents. Hence ignore
   // lint warning here.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  sendingUp(orderId: number, value: string[]) {
+  sendingUp(orderId: number, value: string[]): void {
     // Emit with multiple arguments magic:
     // https://github.com/kaorun343/vue-property-decorator/pull/306
     // console.log('in MultiCheckbox:', orderId, value);

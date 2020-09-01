@@ -45,7 +45,7 @@ export default class SingleChoice extends Vue {
 
   @Emit(ANSWER_INPUT_EMIT_NAME)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  sendingUp(orderId: number, event: string) {
+  sendingUp(orderId: number, event: string): void {
     // Emit with multiple arguments magic:
     // https://github.com/kaorun343/vue-property-decorator/pull/306
     // console.log('in single select:', orderId, event);

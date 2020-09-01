@@ -85,7 +85,7 @@ export default class QuestionContainer extends Vue {
     return printQuestionLabel(this.singleQuestion.orderId, this.questionTotalCount);
   }
 
-  public sendingUp(orderId: number, value: string) {
+  public sendingUp(orderId: number, value: string):void {
     this.$emit('childToParent', orderId, value);
   }
 }
