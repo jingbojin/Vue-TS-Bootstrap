@@ -3,8 +3,9 @@
 [![codecov](https://codecov.io/gh/jingbojin/Vue-TS-Bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/jingbojin/Vue-TS-Bootstrap)
 [![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m785725864-85305093236c6fea5c07351a)](https://uptimerobot.com/dashboard#785725864)
 [![Website vue.jingbojin.com](https://img.shields.io/website-up-down-green-red/http/vue.jingbojin.com)](http://vue.jingbojin.com/)
-![npm type definitions](https://img.shields.io/npm/types/typescript?label=TS)
 ![Vue](https://img.shields.io/badge/vue-2.x-brightgreen.svg)
+[![ts](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)](https://www.typescriptlang.org/)
+[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Demo site: http://vue.jingbojin.com
